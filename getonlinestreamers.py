@@ -1,5 +1,5 @@
 import urllib, urllib2, json, os
-push_url = "http://peti.ml:81/pub?id=example"
+push_url = "http://push.peti.ml/pub?id=streams"
 directory = os.path.dirname(os.path.realpath(__file__))
 
 url = "https://api.twitch.tv/kraken/streams?limit=100&channel=" + open(directory + '/foll').readlines()[0]
@@ -17,7 +17,7 @@ for key, value in data.items():
             if streamername not in open(directory + '/online1').read():
                 f.write(streamername + "\n")
                 # print streamername + " nincs fajlban"
-                req = urllib2.Request(push_url, streamername)
+                req = urllib2.Request(push_url, "TwitchTV | " + streamername + " just went live!")
                 rsp = urllib2.urlopen(req)
             else:
                 f.write(streamername + "\n")
