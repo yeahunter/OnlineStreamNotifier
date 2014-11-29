@@ -36,7 +36,7 @@ for key, value in data.items():
             db.commit()
 
             if cursor.rowcount == 1:
-                req = urllib2.Request(push_url, "TwitchTV | " + streamername + " just went live!")
+                req = urllib2.Request(push_url, "Type=TwitchTV,Channel=" + streamername)
                 rsp = urllib2.urlopen(req)
 
             akikstreamelnek = akikstreamelnek + ',\'%s\'' % streamername
