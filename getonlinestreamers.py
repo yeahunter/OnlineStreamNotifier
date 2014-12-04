@@ -31,7 +31,7 @@ for key, value in data.items():
     if key in 'streams':
         for keyke, valueka in enumerate(value):
             streamername = valueka["channel"]["display_name"]
-            cursor.execute("UPDATE `Channels` SET `Status` = 1, `Updated` = NOW() WHERE `Name` = '%s' AND `Status` = 0" % streamername)
+            cursor.execute("UPDATE `Channels` SET `Status` = 1 WHERE `Name` = '%s' AND `Status` = 0" % streamername)
             cursor.fetchone()
             db.commit()
 
@@ -43,7 +43,7 @@ for key, value in data.items():
 
 
 akikstreamelnek = "(" + akikstreamelnek[1:] + ")"
-cursor.execute("UPDATE `Channels` Set `Status` = 0, `Updated` = NOW() WHERE `Name` NOT IN %s AND `Status` = 1" % akikstreamelnek)
+cursor.execute("UPDATE `Channels` Set `Status` = 0 WHERE `Name` NOT IN %s AND `Status` = 1" % akikstreamelnek)
 cursor.fetchone()
 db.commit()
 
